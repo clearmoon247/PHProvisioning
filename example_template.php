@@ -18,7 +18,7 @@ $workstation_end=$_POST["workstation_subnet_id"];
 //Defines First Usable IP
 ++$workstation_gateway;
 //Defines the Fifth Usable IP
-++$workstation_end; ++$workstation_end; ++$workstation_end; ++$workstation_end; ++$workstation_end;
+$workstation_end += 5;
 
 $voice_network=$_POST["voice_subnet_id"];
 $voice_mask=$_POST["voice_subnet_mask"];
@@ -29,7 +29,7 @@ $voice_end=$_POST["voice_subnet_id"];
 //Defines First Usable IP
 ++$voice_gateway;
 //Defines the Fifth Usable IP
-++$voice_end; ++$voice_end; ++$voice_end; ++$voice_end; ++$voice_end;
+$voice_end += 5;
 
 $management_network=$_POST["management_subnet_id"];
 $management_mask=$_POST["management_subnet_mask"];
@@ -40,7 +40,7 @@ $management_end=$_POST["management_subnet_id"];
 //Defines First Usable IP
 ++$management_gateway;
 //Defines the Fifth Usable IP
-++$management_end; ++$management_end; ++$management_end; ++$management_end; ++$management_end;
+$management_end += 5;
 
 $guest_network=$_POST["guest_subnet_id"];
 $guest_mask=$_POST["guest_subnet_mask"];
@@ -51,7 +51,7 @@ $guest_end=$_POST["guest_subnet_id"];
 //Defines First Usable IP
 ++$guest_gateway;
 //Defines the Fifth Usable IP
-++$guest_end; ++$guest_end; ++$guest_end; ++$guest_end; ++$guest_end;
+$guest_end += 5;
 
 //Provisioning Broadband
 $broadband_ip=$_POST["broadband_ip"];
