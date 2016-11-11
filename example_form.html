@@ -1,0 +1,35 @@
+<html>
+<body>
+
+<h2>Example Router Configuration</h2>
+
+<form action="example_template.php" method="post">
+
+<p><h4>Device/Security Information:</h4>
+Hostname: <input type="text" name="hostname"><br>
+Enable Secret: <input type="text" name="enable_secret"><br>
+Local Admin Username: <input type="text" name="admin_name"><br>
+Local Admin Password: <input type="text" name="admin_secret"><br>
+
+<h4>LAN IP Information:</h4>
+Workstation VLAN: <input type="text" name="workstation_subnet_id">  Subnet Mask: <input type="text" name="workstation_subnet_mask"><br>
+Voice VLAN: <input type="text" name="voice_subnet_id">  Subnet Mask: <input type="text" name="voice_subnet_mask"><br>
+Management VLAN: <input type="text" name="management_subnet_id">  Subnet Mask: <input type="text" name="management_subnet_mask"><br>
+Guest VLAN: <input type="text" name="guest_subnet_id">  Subnet Mask: <input type="text" name="guest_subnet_mask"><br>
+
+<h4>Broadband Information:</h4>
+Broadband Interface IP: <input type="text" name="broadband_ip">  Subnet Mask: <input type="text" name="broadband_mask"><br>
+Broadband Gateway IP: <input type="text" name="broadband_gateway"><br>
+
+<h4>WAN Information:</h4>
+WAN Interface IP:  <input type="text" name="wan_ip">  Subnet Mask: <input type="text" name="wan_mask"><br>
+WAN Peer IP: <input type="text" name="wan_peer"><br>
+Local BGP AS#:  <input type="text" name="local_as"><br>
+WAN Peer AS#:  <input type="text" name="wan_peer_as"><br>
+</p>
+
+<input type="submit">
+</form>
+
+</body>
+</html> 
