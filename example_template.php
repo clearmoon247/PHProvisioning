@@ -7,6 +7,7 @@ $hostname=$_POST["hostname"];
 $enable_secret=$_POST["enable_secret"];
 $admin_name=$_POST["admin_name"];
 $admin_secret=$_POST["admin_secret"];
+$interface_label=$_POST["router_model"];
 
 $reserved_ip_count='5';
 
@@ -111,6 +112,8 @@ hostname $hostname
 !
 username $admin_name priv 15 secret $admin_secret
 !
+enable secret $enable_secret
+!
 ip dhcp excluded-address $workstation_gateway $workstation_end
 ip dhcp excluded-address $voice_gateway $voice_end
 ip dhcp excluded-address $guest_gateway $guest_end
@@ -144,36 +147,36 @@ ip access-list extended NAT_LIST
  permit ip $workstation_network $workstation_wildcard any
  permit ip $guest_network $guest_wildcard any
 !
-interface GigabitEthernet0/0
+interface $interface_label/0
 no shutdown
 no ip address
 duplex auto
 speed auto
 !
-interface GigabitEthernet0/0.45
+interface $interface_label/0.45
  description Workstation Network
  encapsulation dot1Q 45
  ip address $workstation_gateway $workstation_mask
  ip access-group WORKSTATION-OUT-ACL out
  ip nat inside
 !
-interface GigabitEthernet0/0.46
+interface $interface_label/0.46
  description Management Network
  encapsulation dot1Q 46
  ip address $management_gateway $management_mask
 !
-interface GigabitEthernet0/0.47
+interface $interface_label/0.47
  description Voice Network
  encapsulation dot1Q 47
  ip address $voice_gateway $voice_mask
 !
-interface GigabitEthernet0/0.101
+interface $interface_label/0.101
  description Guest Network
  encapsulation dot1Q 101
  ip address $guest_gateway $guest_mask
  ip nat inside
 !
-interface GigabitEthernet0/1
+interface $interface_label/1
  description Broadband Interface
  ip address $broadband_ip $broadband_mask
  duplex auto
@@ -181,14 +184,14 @@ interface GigabitEthernet0/1
  no shutdown
  ip nat outside
 !
-interface GigabitEthernet0/2
+interface $interface_label/2
  description NOT IN USE
  no ip address
  shutdown
 !
 ip route 0.0.0.0 0.0.0.0 $broadband_gateway 99
 !
-ip nat inside source list NAT_LIST interface GigabitEthernet0/1 overload
+ip nat inside source list NAT_LIST interface $interface_label/1 overload
 ";
 
 //If statement to verify WAN Interface & BGP Configuration
