@@ -8,6 +8,8 @@ $enable_secret=$_POST["enable_secret"];
 $admin_name=$_POST["admin_name"];
 $admin_secret=$_POST["admin_secret"];
 
+$reserved_ip_count='5';
+
 //Provisioning Workstation IP Information
 $workstation_network=$_POST["workstation_subnet_id"];
 $workstation_mask=$_POST["workstation_subnet_mask"];
@@ -17,19 +19,21 @@ $workstation_end=$_POST["workstation_subnet_id"];
 
 //Defines First Usable IP
 ++$workstation_gateway;
-//Defines the Fifth Usable IP
-$workstation_end += 5;
+//Defines the End of Reserved IP's, defined by $reserved_ip_count
+for ($n=0; $n<$reserved_ip_count; $n++) {++$workstation_end;}
+
 
 $voice_network=$_POST["voice_subnet_id"];
 $voice_mask=$_POST["voice_subnet_mask"];
 $voice_wildcard=wildcard("$voice_mask");
 $voice_gateway=$_POST["voice_subnet_id"];
 $voice_end=$_POST["voice_subnet_id"];
+ 
 
 //Defines First Usable IP
 ++$voice_gateway;
-//Defines the Fifth Usable IP
-$voice_end += 5;
+//Defines the End of Reserved IP's, defined by $reserved_ip_count
+for ($n=0; $n<$reserved_ip_count; $n++) {++$voice_end;}
 
 $management_network=$_POST["management_subnet_id"];
 $management_mask=$_POST["management_subnet_mask"];
@@ -40,7 +44,7 @@ $management_end=$_POST["management_subnet_id"];
 //Defines First Usable IP
 ++$management_gateway;
 //Defines the Fifth Usable IP
-$management_end += 5;
+for ($n=0; $n<$reserved_ip_count; $n++) {++$management_end;}
 
 $guest_network=$_POST["guest_subnet_id"];
 $guest_mask=$_POST["guest_subnet_mask"];
@@ -50,8 +54,8 @@ $guest_end=$_POST["guest_subnet_id"];
 
 //Defines First Usable IP
 ++$guest_gateway;
-//Defines the Fifth Usable IP
-$guest_end += 5;
+//Defines the End of Reserved IP's, defined by $reserved_ip_count
+for ($n=0; $n<$reserved_ip_count; $n++) {++$guest_end;}
 
 //Provisioning Broadband
 $broadband_ip=$_POST["broadband_ip"];
