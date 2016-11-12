@@ -10,6 +10,11 @@ Hostname: <input type="text" name="hostname"><br>
 Enable Secret: <input type="password" name="enable_secret"><br>
 Local Admin Username: <input type="text" name="admin_name"><br>
 Local Admin Password: <input type="password" name="admin_secret"><br>
+Router Model: <select name="router_model">
+  <option value="FastEthernet0">ISR 1800/1900</option>
+  <option value="GigabitEthernet0">ISR 1900/2900/3900</option>
+  <option value="GigabitEthernet0/0">ASR 1001/ISR 4330</option>
+</select>
 
 <h4>LAN IP Information:</h4>
 Workstation VLAN: <input type="text" name="workstation_subnet_id">  Subnet Mask: <input type="text" name="workstation_subnet_mask"><br>
